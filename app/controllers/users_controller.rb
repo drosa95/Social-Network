@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 	end
 
 	def people
-		a
 		@users = User.all.order(:name)
 	end
 
