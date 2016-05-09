@@ -1,0 +1,43 @@
+<div class="jumbotron" style="text-align: left;">
+
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+       
+  <div class="field">
+    <%= f.label :photo %><br>
+    <%= f.file_field :photo_post %>
+  </div>
+
+  <div class="field">
+    <%= f.label :text %><br>
+    <%= f.text_area :text, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :place %><br>
+    <select id="post_place" name="post[place]" class="form-control">
+      <option>Havana, Cuba</option>
+      <option>Varadero, Cuba</option>
+    </select> 
+  </div>
+
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+
+  <div class="actions">
+    <input type="submit" value="Create Post" name="commit" class="btn btn-primary"></input>
+  </div>
+<% end %>
+</div>

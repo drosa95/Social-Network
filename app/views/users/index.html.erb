@@ -1,0 +1,15 @@
+<ul class="media-list">
+	<% @friends.each do |friend| %>
+        
+  <li class="media">
+  	<% @current = User.find(friend.friend_id) %>
+    <%= image_tag(@current.photo.url(:small), class: 'pull-left') %>
+    <div class="media-body">
+      <h4 class="media-heading"><%= link_to @current.name, user_path(@current) %></h4>
+      <p> <%=  @current.lastname %></p>
+    </div>
+
+  </li>
+</ul>
+
+ <% end %>

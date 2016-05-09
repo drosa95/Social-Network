@@ -1,0 +1,12 @@
+<h2>Requests</h2>
+  <tbody>
+    <% @receivers.each do |r| %>
+    	
+      	<% @user = User.find(r.user_send_id) %>
+      		<div class="alert alert-info">
+    	  	<%= link_to r.msg, @user%> wants to be your friend - <%= link_to "Accept", new_user_notification_path(:new_friend => r.user_send_id), class: "alert-link" %>
+      		</div>    	
+    <% end %>
+  </tbody>
+</table>
+<br>

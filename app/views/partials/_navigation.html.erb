@@ -1,0 +1,29 @@
+<header>
+	<div class="nav-style">
+    	<div class="header">
+          <ul class="nav nav-pills pull-right"> 
+              <% if user_signed_in? %>
+                <li class="round-image-50"><%= image_tag(current_user.photo.url(:thumb)) %></li>
+                <li class=""><%= link_to 'Home', root_path %> </li>
+                <li class="">
+                  <%=link_to "Requests", user_notifications_path([current_user, @notifications])%>
+                <li >
+                  <%=link_to current_user.name, current_user%>
+                </li>
+                <li >
+                  <%=link_to "Friends", users_path%>
+                </li>
+
+                <li class=""><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
+                
+                  <%= link_to "Search People!", people_path,  class: "btn btn-info", type: "submit" %>
+               
+              <% else %>
+                <li class=""><%= link_to "Sign In", new_user_session_path %></li>
+                <li class=""><%= link_to "Sign Up", new_user_registration_path %></li>
+              <% end -%>
+          </ul>
+          <h3 class="text-muted" >Facebook</h3>
+    	</div>
+	</div>
+</header>

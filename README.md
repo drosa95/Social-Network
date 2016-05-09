@@ -1,0 +1,1 @@
+El proyecto es una versión muy simplificada de facebook. Los usuarios pueden registrarse. Una vez que estén registrados, estos pueden recibir y enviar solicitudes de amistades a otros usuarios registrados en el sitio. Una vez que dos usuarios son amigos estos tienen acceso a las publicaciones de cada uno, y dichas publicaciones pueden ser comentadas por los usuarios con acceso.

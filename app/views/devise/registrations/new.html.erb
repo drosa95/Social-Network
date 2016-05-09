@@ -1,0 +1,54 @@
+<% provide(:title, "Sign Up") %>
+
+ <div>
+    <div class="jumbotron"> 
+        <h2>Sign up</h2>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        
+          <label for="user_email"></label>
+     
+          <input class="form-control" placeholder="Username" id="user_email" type="email" name="user[email]" 
+          value="" autofocus="autofocus"></input>
+     
+          <label for="user_password">Password</label>
+          <em>(6 characters minimum)</em>
+           <input class="form-control" placeholder="Password" id="user_password" type="password" 
+           name="user[password]" autocomplete="off"></input>
+    
+          <label for="user_password_confirmation"></label>
+          <input class="form-control" placeholder="Password Confirmation" id="user_password_confirmation" 
+          type="password" name="user[password_confirmation]" autocomplete="off"></input>
+
+          <p></p>
+        <div class="field">
+          <%= f.file_field :photo %>
+        </div>
+        
+        <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+
+       <p></p>
+        <%= f.text_field :lastname, placeholder: "Last Name",  class: "form-control" %>
+
+       <div class="left-aling">
+         <p></p>
+        <%= f.check_box :is_female, {}, true %> <%= f.label :is_female, "Female" %>
+       <p></p>
+         <%= f.label :birthdate %>
+        <%= f.date_select :birthdate %>
+       </div>
+      
+      <p></p>
+
+        <%= f.text_field :country, placeholder: "Country",  class: "form-control" %>
+
+
+          <p></p>
+        <div class="left-aling">
+          <input class="btn btn-success" type="submit" value="Log In" name="commit"></input>
+        </div>
+
+        <% end %>
+  </div>
+</div>

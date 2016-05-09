@@ -1,0 +1,48 @@
+<div class="row profile">
+    <div class="col-sm-6 col-md-5">
+        <%= image_tag(@user.photo.url(:small), class: 'photo') %>
+        <h1><%= @user.name %> <%= @user.lastname %></h1>
+        
+        <!-- Quitar los botones cuando el perfil es el del usuario -->
+        <% if not current_user.id == @user.id%>
+        <!-- Si el usuario no me ha enviado una solicitud, => lo puedo annadir como amigo -->
+            <% if not @notifications_send.count == 0 %>
+                <!-- Solicitudes recibidas por el usuario al que se esta accediendo -->
+                <%@rec = Notification.all.where(user_send_id: @user.id, user_receive_id: current_user.id)%> 
+               <% if not @rec.count == 0 %>
+                    <%= link_to "Friend", "", class: "btn btn-success" %>
+               <% elsif %>
+                    <%= link_to "Solicitud Enviada", "", class: "btn btn-success" %>
+               <% end -%>
+           
+            <% else %>
+    		  <%= link_to "Add Friend", new_user_notification_path([@user], :user => @user.id), class: "btn btn-success" %>
+            <% end -%>
+    	<% else %>
+    		<%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-default" %>
+    	<% end -%>
+   		<%= link_to "Back", users_path, class: "btn btn-default" %>
+
+    </div>
+
+<div>
+<div class="panel-style">
+    <div class="panel panel-info">  
+        <div class="panel-heading">Personal Information</div>
+            <div class="panel-body">      
+        <ul>
+            <% if @user.is_female %>
+                <li><h5>Female</h3></h5>
+            <% else %>
+                <li>Male</li>
+            <% end %>
+            <li><h5>Birthdate: <%= @user.birthdate %></h5></li>
+            <li><h5><%= content_tag(:li, ("Age: " + distance_of_time_in_words(Time.now, @user.birthdate) + " old")) unless @user.birthdate.blank? %></h5></li>
+            <li><h5><%= @user.country unless @user.country.blank? %></h5></li>
+
+        </ul>
+            </div>   
+    </div>
+</div>
+</div>
+</div>

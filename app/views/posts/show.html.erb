@@ -1,0 +1,29 @@
+<div class="panel panel-danger">  
+    <div class="panel-heading">   
+
+       <ul class="media-list">
+          <li class="media">
+              <a class="pull-left">
+                <%= image_tag(@post.user.photo.url(:thumb),  class: 'img-thumbnail') %>
+              </a>
+            <div class="media-body">
+              <h5><%= @post.user.name %></h5>
+              <h5><%= @post.user.lastname %></h5>    
+            </div>
+          </li>
+      </ul>
+    </div>
+    <div class="panel-body">      
+        <div>
+        <ul id="comments-box">
+           
+          <% @post.comments.each do |comment| %>
+                <li><%= comment.user.name %> <%= comment.user.lastname %>: <%= comment.body %></li>
+
+          <% end -%>
+          
+        </ul>
+        </div>
+      
+        <%= render 'comments/form' %>       
+    </div>

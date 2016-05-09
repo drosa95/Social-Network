@@ -1,0 +1,14 @@
+<ul class="media-list">
+	<% @users.each do |user| %>
+        
+  <li class="media">
+    <%= image_tag(user.photo.url(:small), class: 'pull-left') %>
+    <div class="media-body">
+      <h4 class="media-heading"><%= link_to user.name, user_path(user) %></h4>
+      <p> <%=  user.lastname %></p>
+    </div>
+
+  </li>
+</ul>
+
+ <% end %>
